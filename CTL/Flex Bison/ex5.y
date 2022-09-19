@@ -8,6 +8,7 @@
 %token NUMBER
 %token ADD SUB MUL DIV ABS
 %token EOL
+%token OP CP /* Add Closing and opening parenthesis*/
 
 %%
 calclist: /* nothing */ matches at beginning of input
@@ -24,6 +25,9 @@ factor: term default $$ = $1
 term: NUMBER default $$ = $1
      | ABS term { $$ = $2 >= 0? $2 : - $2; }
      ;
+term: NUMBER 
+     | ABS term { $$ = $2 >=0 ? $2: -$2}
+     | OP exp CP { $$ = $2;}
 %%
 
 main(int argc, char **argv){
