@@ -4,7 +4,7 @@
      #include<stdio.h>
 %}
 
-/* declare tokens*/
+/* declare tokens that will be used later*/
 %token NUMBER
 %token ADD SUB MUL DIV ABS
 %token EOL
