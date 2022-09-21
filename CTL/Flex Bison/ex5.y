@@ -40,8 +40,7 @@ yyerror(char *s){
 
 
 /*
-     combining flex and bison together.
-
+     combining flex and bison together. 
      add # include "fb1-5.tab.h" in the declaration section 
 
      makefile
