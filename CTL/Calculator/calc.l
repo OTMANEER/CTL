@@ -7,6 +7,7 @@
 /*part of C definition ==> this definition can be done automatically by the parser in the .h file*/
 
 %{
+    #include "cal.tab.h"
 enum yytokentype{
     NUMBER = 258,
     ADD = 259,
@@ -30,8 +31,7 @@ int yylval;
 [ \t] { }
 . { printf("Mystery character %s\n", yytext); }
 %%
-
-
+ 
 int main(int argc, char **argv)
 {
 int tok;
@@ -41,4 +41,4 @@ if(tok == NUMBER) printf(" = %d\n", yylval);
 else printf("\n");
 }
 return 0;
-}
+} 
