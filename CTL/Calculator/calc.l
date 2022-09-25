@@ -1,9 +1,6 @@
 /* this scanner will recognize tokens used in the Calculator*/
 /* this program  will return tokens that can be used by the PARSER */
 
-
-
-
 /*part of C definition ==> this definition can be done automatically by the parser in the .h file*/
 
 %{
