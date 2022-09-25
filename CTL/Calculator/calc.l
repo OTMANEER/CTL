@@ -19,7 +19,7 @@
 "//".* /* ignore comments */
 [0-9]+ { yylval = atoi(yytext); return NUMBER; }
 \n { return EOL; }
-[ \t] { /* ignore whitespace */ }
+[ \t] { /* ignore whitespaces*/ }
 . { printf("Mystery character %c\n", *yytext); }
 %% 
  
