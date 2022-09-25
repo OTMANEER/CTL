@@ -448,18 +448,10 @@ char *yytext;
 /* this program  will return tokens that can be used by the PARSER */
 /*part of C definition ==> this definition can be done automatically by the parser in the .h file*/
 #line 10 "calc.l"
-enum yytokentype{
-    NUMBER = 258,
-    ADD = 259,
-    SUB = 260,
-    MUL = 261,
-    DIV = 262,
-    ABS = 263,
-    EOL = 264
-};
-int yylval;
-#line 462 "lex.yy.c"
-#line 463 "lex.yy.c"
+    #include "calc.tab.h"
+    int yylval;
+#line 454 "lex.yy.c"
+#line 455 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -676,9 +668,9 @@ YY_DECL
 		}
 
 	{
-#line 22 "calc.l"
+#line 14 "calc.l"
 
-#line 682 "lex.yy.c"
+#line 674 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -737,56 +729,56 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 23 "calc.l"
-{ printf("PLUS\n"); }
+#line 15 "calc.l"
+{ return ADD; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 24 "calc.l"
-{ printf("MINUS\n"); }
+#line 16 "calc.l"
+{ return SUB; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 25 "calc.l"
-{ printf("TIMES\n"); }
+#line 17 "calc.l"
+{ return MUL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 26 "calc.l"
-{ printf("DIVIDE\n"); }
+#line 18 "calc.l"
+{ return DIV; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 27 "calc.l"
-{ printf("ABS\n"); }
+#line 19 "calc.l"
+{ return ABS; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 28 "calc.l"
-{ printf("NUMBER %s\n", yytext); }
+#line 20 "calc.l"
+{ yylval = atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 29 "calc.l"
-{ printf("NEWLINE\n"); }
+#line 21 "calc.l"
+{ return EOL; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 30 "calc.l"
-{ }
+#line 22 "calc.l"
+{ /* ignore whitespace */ }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 31 "calc.l"
-{ printf("Mystery character %s\n", yytext); }
+#line 23 "calc.l"
+{ printf("Mystery character %c\n", *yytext); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 32 "calc.l"
+#line 24 "calc.l"
 ECHO;
 	YY_BREAK
-#line 790 "lex.yy.c"
+#line 782 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1791,19 +1783,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 32 "calc.l"
+#line 24 "calc.l"
 
-
-
-int main(int argc, char **argv)
-{
-int tok;
-while(tok = yylex()) {
-printf("%d", tok);
-if(tok == NUMBER) printf(" = %d\n", yylval);
-if(tok == ADD) printf(" = %s\n", yylval);
-else printf("\n");
-}
-return 0;
-}
-
+ 
