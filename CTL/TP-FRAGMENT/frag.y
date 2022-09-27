@@ -5,6 +5,7 @@
 /* declare tokens */
 %token NUMBER
 %token ADD SUB MUL DIV ABS
+%token EQUAL LESS LESSEQUAL AND OR NON
 %token EOL
 %token OP CP
 %%
@@ -14,6 +15,11 @@ calclist: /* nothing */
 exp: factor  {$$ = $1;}
 | exp ADD factor { $$ = $1 + $3; }
 | exp SUB factor { $$ = $1 - $3; }
+| exp EQUAL exp  { $$ = $1==$3? 0:-1; }
+| exp LESS exp  { $$ = $1<$3? 0:-1; }
+| exp LESSEQUAL exp  { $$ = $1<=$3? 0:-1; }
+| exp AND exp  { $$ = ($1== 0 && $3==0)? 0:-1; }
+| exp OR exp  { $$ = ($1== 0 || $3== 0)? 0:-1; }
 ;
 factor: term   {$$ = $1;}
 | factor MUL term { $$ = $1 * $3; }

@@ -1,4 +1,4 @@
-a.out :   calc.l calc.y
-		bison -d calc.y
-		flex calc.l
-		cc -o $@ calc.tab.c lex.yy.c -lfl
+a.out :   frag.l frag.y
+		bison -d frag.y
+		flex frag.l
+		cc -o $@ frag.tab.c lex.yy.c -lfl

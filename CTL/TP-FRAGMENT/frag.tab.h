@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_CALC_TAB_H_INCLUDED
-# define YY_YY_CALC_TAB_H_INCLUDED
+#ifndef YY_YY_FRAG_TAB_H_INCLUDED
+# define YY_YY_FRAG_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -55,9 +55,15 @@ extern int yydebug;
     MUL = 261,
     DIV = 262,
     ABS = 263,
-    EOL = 264,
-    OP = 265,
-    CP = 266
+    EQUAL = 264,
+    LESS = 265,
+    LESSEQUAL = 266,
+    AND = 267,
+    OR = 268,
+    NON = 269,
+    EOL = 270,
+    OP = 271,
+    CP = 272
   };
 #endif
 
@@ -73,4 +79,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_CALC_TAB_H_INCLUDED  */
+#endif /* !YY_YY_FRAG_TAB_H_INCLUDED  */

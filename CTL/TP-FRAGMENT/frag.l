@@ -4,7 +4,7 @@
 /*part of C definition ==> this definition can be done automatically by the parser in the .h file*/
 
 %{
-    #include "calc.tab.h"
+    #include "frag.tab.h"
     int yylval;
 %}
 
@@ -14,12 +14,17 @@
 "*" { return MUL; }
 "/" { return DIV; }
 "|" { return ABS; }
+"==" {return EQUAL;}
+"<" { return LESS;}
+"<=" { return LESSEQUAL;}
+"!" { return NON;}
+"&&" { return AND;}
+"||" { return OR;}
 "(" { return OP; }
 ")" { return CP; }
 "//".* /* ignore comments */
 [0-9]+ { yylval = atoi(yytext); return NUMBER; }
-\n { return EOL; }
+";" { return EOL; }
 [ \t] { /* ignore whitespaces*/ }
-. { printf("Mystery character %c\n", *yytext); }
+. { return EOL;}
 %% 
- 
